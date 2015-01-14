@@ -16,7 +16,9 @@
 
 	
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>  
 	</properties>
 	
 	<dependencies>
@@ -134,19 +136,37 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-nop</artifactId>
 			<version>1.6.4</version>
 		</dependency>
 
+		<!-- mysql connector -->
 		<dependency>
 	   		<groupId>mysql</groupId>
 	        <artifactId>mysql-connector-java</artifactId>
 	        <version>5.1.27</version>
 		</dependency>
         
+        <!-- proxool for mysql connection pool -->
+        <dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool</artifactId>
+			<version>0.9.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool-cglib</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

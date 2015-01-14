@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- SQL dialect 方言-->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Disable the second-level cache  二级缓存-->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		
+		<property name="hibernate.jdbc.batch_size"> 20 </property>
+		
+        <!-- Echo all executed SQL to stdout 控制台显示SQL语句-->
+        <property name="show_sql">true</property>
+
+        
+        <!-- 将实体类映射成数据库字段  -->
+        <!-- 方法一  通过配置文件映射 -->
+        <mapping resource="com/bjsxt/hibernate/Event.hbm.xml"/>
+        <!-- 方法二  通过注解映射 (略   后面笔记记录)-->
+
+</hibernate-configuration>
