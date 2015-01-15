@@ -18,7 +18,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>  
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+		<maven.resources.plugin.version>2.4.3</maven.resources.plugin.version>
+		<maven-clean-plugin.version>2.4.1</maven-clean-plugin.version>
+		<maven-dependency-plugin.version>2.4</maven-dependency-plugin.version>
+		<maven.surefire.plugin.version>2.7.2</maven.surefire.plugin.version>
+		<maven-war-plugin.version>2.1.1</maven-war-plugin.version>
+		<java.version>1.7</java.version>
+		  
 	</properties>
 	
 	<dependencies>
@@ -159,6 +167,10 @@
 					<artifactId>commons-logging</artifactId>
 					<groupId>commons-logging</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>avalon-framework-api</artifactId>
+					<groupId>avalon-framework</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -192,18 +204,159 @@
 		
 		<finalName>aiyaya</finalName>
 		
+		<!-- for eliminating ide error -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>2.4</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		
+		<plugins>
+			<!-- compile java -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			<!-- compile resources -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<!-- junit testing  -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+				<configuration>
+					<useFile>false</useFile>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*.java</exclude>
+					</excludes>
+					<junitArtifactName>junit:junit</junitArtifactName>
+					<skipTests>true</skipTests><!-- 编译时取消测试 -->
+				</configuration>
+			</plugin>
+			
+			<!-- package -->
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/webapp/WEB-INF/lib</outputDirectory>
+							<excludeTransitive>true</excludeTransitive>
+							<stripVersion>false</stripVersion>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<excludes>
+								<excludeArtifactIds>XmlSchema</excludeArtifactIds>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- clean  -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${maven-clean-plugin.version}</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>src/main/webapp/WEB-INF/lib</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			
+			<!-- jetty web server -->
+			<plugin>
+  				<groupId>org.mortbay.jetty</groupId>
+        		<artifactId>maven-jetty-plugin</artifactId>
+        		<version>6.1.10</version>
+        		<configuration>
+        		 	<!-- <webAppSourceDirectory>${project.basedir}/src/main/webapp</webAppSourceDirectory>      
+        			<webApp>
+      					<contextPath>${project.basedir}/src/main/webapp/</contextPath>
+      					<descriptor>${project.basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+    				</webApp>   -->   
+        			<connectors>      
+            			<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">  
+               			<port>8080</port>      
+            		</connector>      
+	        		</connectors>      
+	        		<reload>automatic</reload>    
+	        		<scanIntervalSeconds>5</scanIntervalSeconds>  
+	        		<systemProperties>  
+	            		  
+     				</systemProperties>  
+     			</configuration> 
+			</plugin>
+			
+			<!-- war -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+				</configuration>
+			</plugin>
+			
+		</plugins>
 	</build>
 	
 	<!-- 插件下载代理 -->
-	<pluginRepositories>
+	<!-- <pluginRepositories>
 		<pluginRepository>
 			<id>Codehaus</id>
 			<url>http://repository.codehaus.org/</url>
 			<snapshots>
-				<enabled>false</enabled> <!-- 不要下载快照版本 -->
+				<enabled>false</enabled> 不要下载快照版本
 			</snapshots>
 		</pluginRepository>
-	</pluginRepositories>
+	</pluginRepositories> -->
 	
 </project>
