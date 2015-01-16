@@ -59,10 +59,10 @@
 			<version>2.3.7</version>
 		</dependency>
 		
-		<!-- spring framework -->
-		<dependency>  
+		<!-- spring的核心包，其他依赖包会自动下载 -->  
+        <dependency>  
             <groupId>org.springframework</groupId>  
-            <artifactId>spring-aop</artifactId>  
+            <artifactId>spring-core</artifactId>  
             <version>3.0.5.RELEASE</version>  
         </dependency> 
         
@@ -274,8 +274,8 @@
 				</configuration>
 			</plugin>
 			
-			<!-- package -->
-			<plugin>
+			<!-- package copy lib -->
+			<!-- <plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>${maven-dependency-plugin.version}</version>
 				<executions>
@@ -295,7 +295,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			
 			<!-- clean  -->
 			<plugin>
@@ -317,11 +317,11 @@
         		<artifactId>maven-jetty-plugin</artifactId>
         		<version>6.1.10</version>
         		<configuration>
-        		 	<!-- <webAppSourceDirectory>${project.basedir}/src/main/webapp</webAppSourceDirectory>      
+        			<webDefaultXml>${project.basedir}/src/main/webapp/etc/webdefault.xml</webDefaultXml>     
         			<webApp>
-      					<contextPath>${project.basedir}/src/main/webapp/</contextPath>
+      					<contextPath>/</contextPath>
       					<descriptor>${project.basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
-    				</webApp>   -->   
+    				</webApp>     
         			<connectors>      
             			<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">  
                			<port>8080</port>      

@@ -6,6 +6,11 @@
 <hibernate-configuration>
 
     <session-factory>
+    	<property name="hibernate.connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</property>
+        <property name="hibernate.proxool.pool_alias">proxoolPool</property>
+        <property name="hibernate.proxool.xml">classpath*:/proxool/proxool.xml</property>
+        <property name="hibernate.proxool.existing_pool">true</property>
+        
         <!-- SQL dialect 方言-->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
