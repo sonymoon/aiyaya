@@ -159,24 +159,9 @@
         
         <!-- proxool for mysql connection pool -->
         <dependency>
-			<groupId>com.cloudhopper.proxool</groupId>
-			<artifactId>proxool</artifactId>
-			<version>0.9.1</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>avalon-framework-api</artifactId>
-					<groupId>avalon-framework</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.cloudhopper.proxool</groupId>
-			<artifactId>proxool-cglib</artifactId>
-			<version>0.9.1</version>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.2.1</version>
 		</dependency>
 		
 	</dependencies>
@@ -324,7 +309,7 @@
     				</webApp>     
         			<connectors>      
             			<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">  
-               			<port>8080</port>      
+               			<port>80</port>      
             		</connector>      
 	        		</connectors>      
 	        		<reload>automatic</reload>    

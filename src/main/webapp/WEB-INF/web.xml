@@ -6,20 +6,6 @@
 
 
   	<display-name>aiyaya</display-name>
-  	
-  	<!--启动连接池-->
-	<servlet>
-		<servlet-name>ServletConfigurator</servlet-name>
-		<servlet-class>
-			org.logicalcobwebs.proxool.configuration.ServletConfigurator
-		</servlet-class>
-		<init-param>
-			<param-name>xmlFile</param-name>
-			<param-value>classpath*:proxool/proxool.xml
-			</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
 
   	<!-- 配置contextConfigLocation参数设置Spring配置文件的路径 -->
 	<context-param>
@@ -55,6 +41,10 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<taglib>
+		<taglib-uri>/s</taglib-uri>
+		<taglib-location>classpath*:/struts-tags.tld</taglib-location>
+	</taglib>
 	<welcome-file-list>
 		<welcome-file>dd.jsp</welcome-file>
 	</welcome-file-list>
