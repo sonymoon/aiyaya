@@ -43,7 +43,7 @@
 
 	<taglib>
 		<taglib-uri>/s</taglib-uri>
-		<taglib-location>classpath*:/struts-tags.tld</taglib-location>
+		<taglib-location>/WEB-INF/classes/struts-tags.tld</taglib-location>
 	</taglib>
 	<welcome-file-list>
 		<welcome-file>dd.jsp</welcome-file>
