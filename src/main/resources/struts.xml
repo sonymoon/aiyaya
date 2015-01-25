@@ -5,7 +5,7 @@
     
 <struts>
   	
-  	<include file="classpath*:/struts/struts-login.xml"></include>
+  	<!-- <include file="classpath*:/struts/struts-login.xml"></include> -->
   	
     <constant name="struts.i18n.encoding" value="UTF-8"></constant>
     <constant name="struts.objectFactory" value="spring"></constant>
