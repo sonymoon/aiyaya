@@ -1,53 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
 
-<web-app id="WebApp_ID" version="2.5"
-	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee_1_4.xsd http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
+	<display-name>aiyaya</display-name>
 
-
-  	<display-name>aiyaya</display-name>
-
-  	<!-- 配置contextConfigLocation参数设置Spring配置文件的路径 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:/spring/applicationContext.xml</param-value>
+		<param-value>classpath*:spring/applicationContext.xml,
+			classpath*:spring/applicationContext-servlet.xml
+		</param-value>
 	</context-param>
 	
-	<!-- 通过配置ContextLoaderListener监听器，使服务器启动时，自动加载applicationContext配置，启动Spring容器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
-	
-	<!-- for urlrewriter -->
-	<!-- <filter>
-		<filter-name>UrlRewriteFilter</filter-name>
-		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+
+
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>sessionFactory</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>struts-cleanup</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts-cleanup</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>Struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
-	</filter-mapping> -->
-	
-	<filter>
-		<filter-name>struts2</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
-	<taglib>
-		<taglib-uri>/s</taglib-uri>
-		<taglib-location>/WEB-INF/classes/struts-tags.tld</taglib-location>
-	</taglib>
-	<welcome-file-list>
-		<welcome-file>dd.jsp</welcome-file>
-	</welcome-file-list>
 	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/s</taglib-uri>
+			<taglib-location>/WEB-INF/struts-tags.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 	
 </web-app>
