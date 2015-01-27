@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=GBK">
 <title>Loading...</title>
 <script language="javascript" type="text/javascript">
-	window.location.href ="main.minhui";
+	window.location.href ="main.mh";
 </script>
 </head>
 <body>
