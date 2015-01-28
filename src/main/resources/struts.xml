@@ -4,20 +4,6 @@
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
     
 <struts>
-  	
-  	<!-- <include file="classpath*:/struts/struts-login.xml"></include> -->
-  	
-    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
-    <constant name="struts.objectFactory" value="spring"></constant>
-    <constant name="struts.configuration.xml.reload" value="true" />
-    <constant name="struts.devMode" value="true" />
-    <constant name="struts.serve.static.browserCache" value="false"/>
-    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-    <constant name="struts.multipart.saveDir" value="/tmp"/>
-	<constant name="struts.multipart.maxSize" value="500000000"/>  
-	<constant name="struts.objectFactory.spring.autoWire" value="name"/>  
-	<constant name="struts.action.extension" value="mh"/>  
-   
    	<package name="home" namespace="/" extends="struts-default">
 		<default-action-ref name="index" />
 		<action name="index" >
