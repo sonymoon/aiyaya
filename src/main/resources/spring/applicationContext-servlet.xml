@@ -15,5 +15,8 @@
 			http://cxf.apache.org/jaxws 
             http://cxf.apache.org/schemas/jaxws.xsd"
 	default-autowire="byName" default-lazy-init="true">
-	
+
+	<bean id="mainAction" class="com.mh.web.action.Main" scope="prototype"
+		autowire="byName">
+	</bean>
 </beans>
