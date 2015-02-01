@@ -304,7 +304,7 @@
         		<configuration>
         			<webDefaultXml>${project.basedir}/src/main/webapp/etc/webdefault.xml</webDefaultXml>     
         			<webApp>
-      					<contextPath>/</contextPath>
+      					<contextPath>/aiyaya</contextPath>
       					<descriptor>${project.basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
     				</webApp>     
         			<connectors>      

@@ -1,8 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="/WEB-INF/struts-tags.tld" prefix="s"%>
 <%@include file="top.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +20,9 @@
 	rel="stylesheet" />
 
 <!-- 可选的Bootstrap主题文件（一般不使用） -->
-<script
-	src="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css"></script>
+<link
+	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css"
+	rel="stylesheet" />
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -30,98 +30,113 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script
 	src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-</head>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
 
 <title>爱伢伢</title>
 
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<%-- <span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> --%>
-			</button>
-			<a class="navbar-brand" href="#">Project name</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<form class="navbar-form navbar-right">
-				<div class="form-group">
-					<input type="text" placeholder="Email" class="form-control">
-				</div>
-				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-success">Sign in</button>
-			</form>
-		</div>
-		<!--/.navbar-collapse -->
-	</div>
-	</nav>
-
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron">
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
-			<h1>Hello, world!</h1>
-			<p>This is a template for a simple marketing or informational
-				website. It includes a large callout called a jumbotron and three
-				supporting pieces of content. Use it as a starting point to create
-				something more unique.</p>
-			<p>
-				<a class="btn btn-primary btn-lg" href="#" role="button">Learn
-					more &raquo;</a>
-			</p>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">爱伢伢</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">首页</a></li>
+					<li><a href="#about">活动</a></li>
+					<li><a href="#contact">心理</a></li>
+					<li><a href="#contact">培训</a></li>
+					<li><a href="#contact">家长</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-expanded="false">您尚未登录<span
+							class="caret"></span>
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Nav header</li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul></li>
+
+					<li class=""><a href="../navbar-static-top/">登录</a></li>
+					<li><a href="./">注册 <span class="sr-only">(current)</span></a></li>
+				</ul>
+
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" placeholder="请输入内容" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-success">搜索</button>
+				</form>
+			</div>
+			<!--/.nav-collapse -->
 		</div>
-	</div>
+	</nav>
+	<!-- .nav -->
+
 
 	<div class="container">
-		<!-- Example row of columns -->
 		<div class="row">
-			<div class="col-md-4">
-				<h2>Heading</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn btn-default" href="#" role="button">View details
-						&raquo;</a>
-				</p>
+			<div class="col-md-8">
+				<div class="container">
+					<span class="label label-danger">危险标签</span>
+				</div>
+				<div class="thumbnail">
+					<img src="images/kittens.jpg" alt="通用的占位符缩略图">
+				</div>
+				<div class="thumbnail">
+					<img src="images/kittens.jpg" alt="通用的占位符缩略图">
+				</div>
+				<div class="thumbnail">
+					<img src="images/kittens.jpg" alt="通用的占位符缩略图">
+				</div>
+				<div class="thumbnail">
+					<img src="images/kittens.jpg" alt="通用的占位符缩略图">
+				</div>
+				<div class="thumbnail">
+					<img src="images/kittens.jpg" alt="通用的占位符缩略图">
+				</div>
+				<div class="thumbnail">
+					<img src="images/kittens.jpg" alt="通用的占位符缩略图">
+				</div>
+				<div class="thumbnail">
+					<img src="images/kittens.jpg" alt="通用的占位符缩略图">
+				</div>
+				
 			</div>
+
 			<div class="col-md-4">
-				<h2>Heading</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn btn-default" href="#" role="button">View details
-						&raquo;</a>
-				</p>
-			</div>
-			<div class="col-md-4">
-				<h2>Heading</h2>
-				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
-					egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-					nibh, ut fermentum massa justo sit amet risus.</p>
-				<p>
-					<a class="btn btn-default" href="#" role="button">View details
-						&raquo;</a>
-				</p>
+				<div class="jumbotron">
+					<h1>Navbar example</h1>
+					<p>This example is a quick exercise to illustrate how the
+						default, static and fixed to top navbar work. It includes the
+						responsive CSS and HTML, so it also adapts to your viewport and
+						device.</p>
+					<p>To see the difference between static and fixed top navbars,
+						just scroll.</p>
+					<p>
+						<a class="btn btn-lg btn-primary" href="../../components/#navbar"
+							role="button">测试&raquo;</a>
+					</p>
+				</div>
 			</div>
 		</div>
-
-		<hr>
-
-			<footer>
-			<p>&copy; Company 2014</p>
-			</footer>
 	</div>
 	<!-- /container -->
 </body>
